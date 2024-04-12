@@ -1,5 +1,5 @@
 import { PORT } from "@/shared";
-import { DatabaseNoSQLHelper } from "@/external/helpers";
+import { DatabaseNoSQLHelper } from "@/layers/external";
 import { setupRest } from "@/main/rest";
 
 DatabaseNoSQLHelper.connect()

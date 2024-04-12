@@ -5,11 +5,12 @@ export class DatabaseNoSQLHelper {
     static client: MongoClient;
 
     static async connect(): Promise<void> {
-        DatabaseNoSQLHelper.client = await MongoClient.connect(MONGO_URL as string);
+        DatabaseNoSQLHelper.client = await MongoClient.connect(MONGO_URL);
     }
 
     static async disconnect(): Promise<void> {
         await DatabaseNoSQLHelper.client.close();
+
     }
 
     static getCollection(name: string): Collection {
