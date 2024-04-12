@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  node:
+    image: node
+    container_name: fiter-lottery
+    build: ./
+    # Mesmo que `docker run -t`
+    tty: true
+    # Mesmo que `docker run -i`
+    stdin_open: true
+    command: bash
+    restart: always
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - mongodb
+    ports:
+      - 3333:3333
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/fiter-lottery
+
+  mongodb:
+    image: mongo
+    container_name: fiter-lottery-db
+    volumes:
+      - ./:/app
+    restart: always
+    ports:
+      - 27017:27017
+
+networks:
+  default:
+    name: fiter-lottery-net
