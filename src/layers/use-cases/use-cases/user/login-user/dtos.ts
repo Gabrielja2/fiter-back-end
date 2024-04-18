@@ -7,4 +7,11 @@ export type LoginUserDTO = {
 }
 
 
-export type LoginUserResponseDTO = string | InvalidParamError;
+export type LoginUserResponseDTO = {
+    token: string
+    user: {
+        id: string
+        email: string
+        balance?: number
+    }
+} | InvalidParamError;

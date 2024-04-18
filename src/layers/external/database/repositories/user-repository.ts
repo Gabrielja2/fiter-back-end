@@ -10,6 +10,7 @@ export class UserRepositoryAdapter implements UserRepositoryProtocol {
             user?._id.toString(),
             user?.email,
             user?.password,
+            user?.balance,
 
         );
     }
@@ -20,6 +21,7 @@ export class UserRepositoryAdapter implements UserRepositoryProtocol {
             .insertOne({
                 email: data.email,
                 password: data.password,
+                balance: 50000,
                 created_at: new Date(),
                 updated_at: null,
             });

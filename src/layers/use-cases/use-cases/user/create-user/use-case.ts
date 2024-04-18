@@ -21,7 +21,7 @@ export class CreateUserUseCase implements CreateUserUseCaseProtocol {
 
 		await this.userRepository.createUser({
 			email: userOrError.email.value,
-			password: hashPassword
+			password: hashPassword,
 		});
 
 		return userOrError.email.value;

@@ -22,6 +22,17 @@ export class LoginUserUseCase implements LoginUserUseCaseProtocol {
 		const isEqual = await this.criptography.compareHash(user.password, password);
 		if (!isEqual) return new InvalidParamError("Senha ou email estão incorretos");
 
-		return this.authentication.createJsonWebToken({ id: user.id, email: user.email }, JWT_EXPIRE_IN_SECONDS);
+		const token = this.authentication.createJsonWebToken({ id: user.id, email: user.email }, JWT_EXPIRE_IN_SECONDS)
+		console.log('token', token);
+
+
+		return {
+			token,
+			user: {
+				email: user.email,
+				id: user.id,
+				balance: user.balance
+			}
+		};
 	}
 }
