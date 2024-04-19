@@ -6,7 +6,7 @@
     "strictPropertyInitialization": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,    
+    "forceConsistentCasingInFileNames": true,
     "rootDirs": ["src"],
     "baseUrl": "src",
     "outDir": "dist",
@@ -15,5 +15,5 @@
       "@/*": ["*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "tests"]
 }
