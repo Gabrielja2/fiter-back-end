@@ -13,8 +13,11 @@ export class RestAdapter {
 	static route = (route: HttpProtocol) => {
 		return async (req: Request, res: Response) => {
 			const { response, statusCode } = await route.handle({
-				data: { ...req.body, ...req.query, ...req.params },
-				userId: req.userId
+				data: req.body,
+				query: req.query,
+				params: req.params,
+				userId: req.userId,
+				headers: req.headers
 			});
 
 			return res.status(statusCode).json(response);
@@ -24,7 +27,9 @@ export class RestAdapter {
 	static middleware = (middleware: HttpProtocol) => {
 		return async (req: Request, res: Response, next: NextFunction) => {
 			const { response, statusCode } = await middleware.handle({
-				data: { ...req.body, ...req.query, ...req.params },
+				data: req.body,
+				query: req.query,
+				params: req.params,
 				userId: req.userId,
 				headers: req.headers
 			});

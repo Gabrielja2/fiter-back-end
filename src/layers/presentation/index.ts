@@ -4,4 +4,4 @@ export * from "./protocols";
 export * from "./helpers";
 export * from "./errors";
 export * from "./decorators";
-
+export * from "./middlewares";
