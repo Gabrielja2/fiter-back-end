@@ -3,7 +3,7 @@ POST http://localhost:3030/api/users/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "caiol@test.com",
+    "email": "gabariel@test.com",
     "password": "Gabriel123"
 }
 
@@ -13,26 +13,26 @@ POST http://localhost:3030/api/users/login HTTP/1.1
 content-type: application/json
 
 {
-     "email": "caiol@test.com",
+    "email": "gabariel@test.com",
     "password": "Gabriel123"
 }
 
 ###
 POST http://localhost:3030/api/tickets/register HTTP/1.1
 content-type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjMwNWMxNDdiNzE0NzUxMjFhYjgwZCIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM1NzEyNzksImV4cCI6MTcyMjIxMTM3OH0.byW72c2bP5KkkAVRiB3spg0bo4zJXyWZb_2UWI1n1N0
 
     {
         "tickets": [
             {
                 "ticketId": 2,
                 "price": 100.00,
-                "selectedNumbers": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                "selectedNumbers": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
             },
              {
                 "ticketId": 3,
                 "price": 3.00,
-                "selectedNumbers": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                "selectedNumbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
             }
         ]
     }

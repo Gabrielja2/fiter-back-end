@@ -1,8 +1,9 @@
 export class TicketModel {
     constructor(
         public readonly id: string,
-        public readonly ticketId: number,
-        public readonly price: number,
-        public readonly selectedNumbers: number[]
+        public ticketId: number,
+        public price: number,
+        public selectedNumbers: number[],
+        public userId: string
     ) { }
 }

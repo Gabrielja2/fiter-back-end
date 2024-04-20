@@ -1,6 +1,6 @@
 import { CreateUserUseCaseProtocol } from "./protocol";
 import { CreateUserDTO, CreateUserResponseDTO } from "./dtos";
-import { UserRepositoryProtocol, CryptographyProtocol, InvalidParamError } from "@/layers/use-cases";
+import { UserRepositoryProtocol, CryptographyProtocol, InvalidParamError, BalanceRepositoryProtocol } from "@/layers/use-cases";
 import { User } from "@/layers/entities";
 
 export class CreateUserUseCase implements CreateUserUseCaseProtocol {
@@ -8,6 +8,7 @@ export class CreateUserUseCase implements CreateUserUseCaseProtocol {
 	constructor(
 		private readonly userRepository: UserRepositoryProtocol,
 		private readonly cryptographyAdapter: CryptographyProtocol,
+		private readonly balanceRepository: BalanceRepositoryProtocol
 
 	) { }
 
@@ -19,10 +20,18 @@ export class CreateUserUseCase implements CreateUserUseCaseProtocol {
 
 		const hashPassword = await this.cryptographyAdapter.hash(userOrError.password.value);
 
-		await this.userRepository.createUser({
+		const newUser = await this.userRepository.createUser({
 			email: userOrError.email.value,
 			password: hashPassword,
 		});
+
+		const balance = await this.balanceRepository.registerBalance({
+			userId: newUser.id,
+			balance: 50000
+		})
+
+		await this.userRepository.updateUserBalance(newUser.id, balance.id);
+
 
 		return userOrError.email.value;
 	}

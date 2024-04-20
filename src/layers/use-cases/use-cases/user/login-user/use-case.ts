@@ -31,7 +31,6 @@ export class LoginUserUseCase implements LoginUserUseCaseProtocol {
 			user: {
 				email: user.email,
 				id: user.id,
-				balance: user.balance
 			}
 		};
 	}

@@ -8,4 +8,4 @@ export type RegisterTicketDTO = {
 }
 
 
-export type RegisterTicketResponseDTO = number | InvalidParamError;
+export type RegisterTicketResponseDTO = string | InvalidParamError;

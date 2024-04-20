@@ -1,8 +1,9 @@
 export class UserModel {
     constructor(
         public readonly id: string,
-        public readonly email: string,
-        public readonly password: string,
-        public readonly balance?: number
+        public email: string,
+        public password: string,
+        public balanceId?: string,
+        public tickets?: string[]
     ) { }
 }

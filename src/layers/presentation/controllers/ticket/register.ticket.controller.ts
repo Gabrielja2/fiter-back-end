@@ -8,13 +8,14 @@ export class RegisterTicketController implements HttpProtocol {
 
     async handle(request: HttpRequest): Promise<HttpResponse> {
         const tickets = request.data.tickets;
+        const userId = request.userId;
 
         let ticketsList = []
 
         for (const ticket of tickets) {
             const { ticketId, price, selectedNumbers } = ticket;
 
-            if (!ticketId || !price || !selectedNumbers) return badRequest(new MissingParamError("ticketId, price, selectedNumbers"));
+            if (!ticketId || !price || !selectedNumbers) return badRequest(new MissingParamError("ticketId or price or selectedNumbers"));
             if (typeof price !== "number") return badRequest(new InvalidTypeError("price"));
             if (!Array.isArray(selectedNumbers)) return badRequest(new InvalidTypeError("selectedNumbers"));
             if (typeof ticketId !== "number") return badRequest(new InvalidTypeError("ticketId"));
@@ -23,7 +24,8 @@ export class RegisterTicketController implements HttpProtocol {
         }
 
 
-        const response = await this.useCase.execute(ticketsList);
+        const response = await this.useCase.execute(ticketsList, userId as string);
+
         if (response instanceof Error) return badRequest(response);
 
         return created(response);
