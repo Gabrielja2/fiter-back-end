@@ -32,14 +32,22 @@ export class BalanceRepositoryAdapter implements BalanceRepositoryProtocol {
         return this.toMapperBalanceModel(insertedBalance as WithId<Document>);
     }
 
-    async findBalanceByUserId(userId: string): Promise<BalanceModel | null> {
+    async findBalanceByUserId(userId: string): Promise<BalanceModel> {
 
         const balance = await DatabaseNoSQLHelper.getCollection(this.collection)
             .findOne({ user_id: new ObjectId(userId) });
 
-        if (!balance) return null;
-
         return this.toMapperBalanceModel(balance as WithId<Document>);
+    }
+
+    async updateBalance(balanceId: string, balance: number): Promise<void> {
+
+        await DatabaseNoSQLHelper.getCollection(this.collection)
+            .updateOne({
+                _id: new ObjectId(balanceId),
+            }, {
+                $set: { balance }
+            });
     }
 
 }

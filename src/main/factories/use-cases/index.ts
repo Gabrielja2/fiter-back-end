@@ -4,6 +4,6 @@ import { userRepositoryAdapter, criptographyAdapter, authenticationAdapter, tick
 
 export const createUserUseCase = new CreateUserUseCase(userRepositoryAdapter, criptographyAdapter, balanceRepositoryAdapter);
 export const loginUserUseCase = new LoginUserUseCase(userRepositoryAdapter, criptographyAdapter, authenticationAdapter);
-export const registerTicketUseCase = new RegisterTicketUseCase(ticketRepositoryAdapter, userRepositoryAdapter);
+export const registerTicketUseCase = new RegisterTicketUseCase(ticketRepositoryAdapter, userRepositoryAdapter, balanceRepositoryAdapter);
 
 
