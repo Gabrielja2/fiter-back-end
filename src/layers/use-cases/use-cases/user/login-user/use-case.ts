@@ -23,8 +23,6 @@ export class LoginUserUseCase implements LoginUserUseCaseProtocol {
 		if (!isEqual) return new InvalidParamError("Senha ou email estão incorretos");
 
 		const token = this.authentication.createJsonWebToken({ id: user.id, email: user.email }, JWT_EXPIRE_IN_SECONDS)
-		console.log('token', token);
-
 
 		return {
 			token,

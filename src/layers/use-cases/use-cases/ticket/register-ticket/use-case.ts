@@ -45,6 +45,6 @@ export class RegisterTicketUseCase implements RegisterTicketUseCaseProtocol {
 
 		await this.balanceRepository.updateBalance(userBalance.id, userBalance.balance);
 
-		return "Tickets foram registrados";
+		return "Tickets registrados com sucesso";
 	}
 }
