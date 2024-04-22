@@ -1,7 +1,7 @@
 export class InvalidTicketIdError extends Error {
-    constructor(id: number) {
+    constructor(ticketId: number) {
         super();
         this.name = "InvalidTicketIdError";
-        this.message = `Esse id (${id}) é inválido`;
+        this.message = `Esse id (${ticketId}) é inválido`;
     }
 }

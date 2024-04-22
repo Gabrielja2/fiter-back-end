@@ -23,7 +23,8 @@ export class TicketPrice {
     private static validate(ticketPrice: number): boolean {
         if (!ticketPrice) return false;
 
-        if (ticketPrice < 0 || ticketPrice > 25000) return false;
+        const isInvalidPrice = ticketPrice < 0 || ticketPrice > 25000
+        if (isInvalidPrice) return false;
 
         return true;
     }
