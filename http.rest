@@ -20,7 +20,7 @@ content-type: application/json
 ###
 POST http://localhost:3030/api/tickets/register HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY2NDViMjcwYjk4NGZlNWNjY2U2NiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTIzNDUsImV4cCI6MTcyMjQzMjQ0NH0.jWrnDLzXSSZLnQPCgUiL61csX8568ksHne_MSwhlz1E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
 
     {
         "tickets": [
@@ -37,3 +37,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY2NDViM
                      
         ]
     }
+
+###
+GET http://localhost:3030/api/ticket-config HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+

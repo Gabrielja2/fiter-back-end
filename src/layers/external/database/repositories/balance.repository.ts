@@ -43,11 +43,14 @@ export class BalanceRepositoryAdapter implements BalanceRepositoryProtocol {
     async updateBalance(balanceId: string, balance: number): Promise<void> {
 
         await DatabaseNoSQLHelper.getCollection(this.collection)
-            .updateOne({
-                _id: new ObjectId(balanceId),
-            }, {
-                $set: { balance }
-            });
+            .updateOne({ _id: new ObjectId(balanceId) },
+                {
+                    $set: {
+                        balance: balance,
+                        updated_at: new Date()
+                    }
+                }
+            );
     }
 
 }

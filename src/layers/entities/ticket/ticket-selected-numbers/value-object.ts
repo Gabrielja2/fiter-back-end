@@ -23,7 +23,9 @@ export class TicketSelectedNumbers {
     private static validate(ticketSelectedNumbers: number[]): boolean {
         if (!ticketSelectedNumbers) return false;
 
-        if (ticketSelectedNumbers.length < 15 || ticketSelectedNumbers.length > 20) return false;
+
+        const isInvalidSeletectedNumbers = ticketSelectedNumbers.length < 15 || ticketSelectedNumbers.length > 20
+        if (isInvalidSeletectedNumbers) return false;
 
 
         return true;

@@ -6,3 +6,6 @@ export * from "./ticket-repository/protocol";
 
 export * from "./balance-repository/model";
 export * from "./balance-repository/protocol";
+
+export * from "./ticket-config-repository/model";
+export * from "./ticket-config-repository/protocol"

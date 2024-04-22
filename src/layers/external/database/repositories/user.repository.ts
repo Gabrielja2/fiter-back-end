@@ -2,15 +2,6 @@ import { DatabaseNoSQLHelper } from "../helpers";
 import { CreateUserDTO, UserModel, UserRepositoryProtocol, } from "@/layers/use-cases";
 import { WithId, Document, ObjectId, } from "mongodb";
 
-interface Filter {
-    _id: ObjectId;
-}
-
-interface Update {
-    $push: {
-        tickets: { $each: ObjectId[] };
-    };
-}
 export class UserRepositoryAdapter implements UserRepositoryProtocol {
     private readonly collection: string = "users";
 
@@ -68,15 +59,25 @@ export class UserRepositoryAdapter implements UserRepositoryProtocol {
 
     async updateUserBalance(userId: string, balanceId: string): Promise<void> {
         await DatabaseNoSQLHelper.getCollection(this.collection)
-            .updateOne({ _id: new ObjectId(userId) }, { $set: { balance_id: new ObjectId(balanceId) } });
+            .updateOne({ _id: new ObjectId(userId) },
+                {
+                    $set: {
+                        balance_id: new ObjectId(balanceId),
+                        updated_at: new Date(),
+                    }
+                }
+            );
     }
 
-    async updateUserTickets(userId: string, ticketId: string): Promise<void> {
-        const filter: Filter = { _id: new ObjectId(userId) };
-        const update: Update = { $push: { tickets: { $each: [new ObjectId(ticketId)] } } };
+    async updateUserTickets(userId: string, ticketId: string) {
+        const filter = { _id: new ObjectId(userId) };
+        const update = {
+            $push: { tickets: { $each: [new ObjectId(ticketId)] } },
+            $set: { updated_at: new Date() }
+        } as Document;
 
         await DatabaseNoSQLHelper.getCollection(this.collection)
-            .updateOne(filter, update as Document);
+            .updateOne(filter, update);
     }
 }
 
