@@ -9,3 +9,9 @@ export * from "./balance-repository/protocol";
 
 export * from "./ticket-config-repository/model";
 export * from "./ticket-config-repository/protocol"
+
+export * from "./prize-draw-config-repository/model";
+export * from "./prize-draw-config-repository/protocol"
+
+export * from "./prize-draw-repository/model";
+export * from "./prize-draw-repository/protocol"

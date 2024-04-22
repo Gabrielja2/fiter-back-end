@@ -23,6 +23,10 @@ export class TicketSelectedNumbers {
     private static validate(ticketSelectedNumbers: number[]): boolean {
         if (!ticketSelectedNumbers) return false;
 
+        for (const number of ticketSelectedNumbers) {
+            if (number < 1 || number > 25) return false;
+        }
+
 
         const isInvalidSeletectedNumbers = ticketSelectedNumbers.length < 15 || ticketSelectedNumbers.length > 20
         if (isInvalidSeletectedNumbers) return false;

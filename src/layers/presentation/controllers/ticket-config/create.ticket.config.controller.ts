@@ -11,7 +11,7 @@ export class CreateTicketConfigController implements HttpProtocol {
 
 
         const hasParams = ticketConfigCost || ticketConfigQuantityNumbers
-        if (!hasParams) return badRequest(new MissingParamError("ticketConfig"));
+        if (!hasParams) return badRequest(new MissingParamError("ticketConfigCost or ticketConfigQuantityNumbers"));
 
         if (typeof ticketConfigCost !== "number") return badRequest(new InvalidTypeError("ticketConfigCost"));
         if (typeof ticketConfigQuantityNumbers !== "number") return badRequest(new InvalidTypeError("ticketConfigQuantityNumbers"));
