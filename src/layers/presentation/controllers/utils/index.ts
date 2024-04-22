@@ -6,8 +6,12 @@ export class Validate {
 		const errors: Error[] = [];
 		fields.forEach(element => {
 			const value = body[element.name];
-			if (!value && !element.nullable) errors.push(new MissingParamError(element.name));
-			if (value && typeof value !== "string") errors.push(new InvalidTypeError(element.name));
+
+			const missingParams = !value && !element.nullable
+			if (missingParams) errors.push(new MissingParamError(element.name));
+
+			const existsParamsWithInvalidType = value && typeof value !== element.type
+			if (existsParamsWithInvalidType) errors.push(new InvalidTypeError(element.name));
 
 		});
 		if (errors.length > 0) return errors[0];

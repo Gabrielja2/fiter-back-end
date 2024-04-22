@@ -4,5 +4,5 @@ import { registerTicketController, authenticateUserMiddleware } from "@/main/fac
 
 
 export default (router: Router): void => {
-    router.post("/tickets/register", RestAdapter.middleware(authenticateUserMiddleware), RestAdapter.route(registerTicketController), RestAdapter.route(registerTicketController));
+    router.post("/tickets/register", RestAdapter.middleware(authenticateUserMiddleware), RestAdapter.route(registerTicketController));
 }

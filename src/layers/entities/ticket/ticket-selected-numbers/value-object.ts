@@ -14,7 +14,8 @@ export class TicketSelectedNumbers {
     }
 
     static create(ticketSelectedNumbers: number[]): TicketSelectedNumbers | InvalidTicketSelectedNumbersError {
-        if (!this.validate(ticketSelectedNumbers)) return new InvalidTicketSelectedNumbersError(ticketSelectedNumbers);
+        const isValidParam = this.validate(ticketSelectedNumbers);
+        if (!isValidParam) return new InvalidTicketSelectedNumbersError(ticketSelectedNumbers);
 
         return new TicketSelectedNumbers(ticketSelectedNumbers);
     }

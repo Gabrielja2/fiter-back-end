@@ -13,7 +13,8 @@ export class CreateUserUseCase implements CreateUserUseCaseProtocol {
 	) { }
 
 	async execute({ email, password }: CreateUserDTO): Promise<CreateUserResponseDTO> {
-		if (await this.userRepository.findByEmail(email)) return new InvalidParamError("Email já cadastrado");
+		const hasEmail = await this.userRepository.findByEmail(email);
+		if (hasEmail) return new InvalidParamError("Email já cadastrado");
 
 		const userOrError = User.create(email, password);
 		if (userOrError instanceof Error) return userOrError;

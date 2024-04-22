@@ -14,7 +14,9 @@ export class UserBalance {
     }
 
     static create(userBalance: number): UserBalance | InvalidUserBalanceError {
-        if (!this.validate(userBalance)) return new InvalidUserBalanceError(userBalance);
+        const isValidParam = this.validate(userBalance);
+
+        if (!isValidParam) return new InvalidUserBalanceError(userBalance);
 
         return new UserBalance(userBalance);
     }

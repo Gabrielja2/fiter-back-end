@@ -14,7 +14,8 @@ export class UserEmail {
     }
 
     static create(userEmail: string): UserEmail | InvalidUserEmailError {
-        if (!this.validate(userEmail)) return new InvalidUserEmailError(userEmail);
+        const isValidParam = this.validate(userEmail);
+        if (!isValidParam) return new InvalidUserEmailError(userEmail);
 
         return new UserEmail(userEmail);
     }

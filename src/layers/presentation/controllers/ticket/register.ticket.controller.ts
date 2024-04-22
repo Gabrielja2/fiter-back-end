@@ -15,9 +15,13 @@ export class RegisterTicketController implements HttpProtocol {
         for (const ticket of tickets) {
             const { ticketId, price, selectedNumbers } = ticket;
 
-            if (!ticketId || !price || !selectedNumbers) return badRequest(new MissingParamError("ticketId or price or selectedNumbers"));
+            const hasParams = ticketId || price || selectedNumbers
+            if (!hasParams) return badRequest(new MissingParamError("ticketId or price or selectedNumbers"));
+
+            const isArray = Array.isArray(selectedNumbers)
+            if (!isArray) return badRequest(new InvalidTypeError("selectedNumbers"));
+
             if (typeof price !== "number") return badRequest(new InvalidTypeError("price"));
-            if (!Array.isArray(selectedNumbers)) return badRequest(new InvalidTypeError("selectedNumbers"));
             if (typeof ticketId !== "number") return badRequest(new InvalidTypeError("ticketId"));
 
             ticketsList.push({ ticketId, price, selectedNumbers })

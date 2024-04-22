@@ -14,7 +14,8 @@ export class TicketPrice {
     }
 
     static create(ticketPrice: number): TicketPrice | InvalidTicketPriceError {
-        if (!this.validate(ticketPrice)) return new InvalidTicketPriceError(ticketPrice);
+        const isValidParam = this.validate(ticketPrice);
+        if (!isValidParam) return new InvalidTicketPriceError(ticketPrice);
 
         return new TicketPrice(ticketPrice);
     }

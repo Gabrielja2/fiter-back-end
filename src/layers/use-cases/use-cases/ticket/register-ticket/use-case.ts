@@ -24,7 +24,8 @@ export class RegisterTicketUseCase implements RegisterTicketUseCaseProtocol {
 		}
 
 		const userBalance = await this.balanceRepository.findBalanceByUserId(user.id);
-		if (!userBalance || userBalance.balance < totalPrice) return new InvalidParamError('Saldo insuficiente');
+		const hasValidBalance = !!userBalance && userBalance.balance >= totalPrice;
+		if (!hasValidBalance) return new InvalidParamError('Saldo insuficiente');
 
 		for (const ticket of tickets) {
 			const { ticketId, price, selectedNumbers } = ticket;

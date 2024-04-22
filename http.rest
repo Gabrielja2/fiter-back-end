@@ -20,7 +20,7 @@ content-type: application/json
 ###
 POST http://localhost:3030/api/tickets/register HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjQzNjczYmZmOTk3Yzk2ZmI4NGU3ZSIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM2NDkyNzAsImV4cCI6MTcyMjI4OTM2OX0.qF-rmFjLeNIggW4XNyIZZebWF_Jg7L-YzB2OnirO5U0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY2NDViMjcwYjk4NGZlNWNjY2U2NiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTIzNDUsImV4cCI6MTcyMjQzMjQ0NH0.jWrnDLzXSSZLnQPCgUiL61csX8568ksHne_MSwhlz1E
 
     {
         "tickets": [

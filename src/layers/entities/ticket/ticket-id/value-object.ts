@@ -14,7 +14,8 @@ export class TicketId {
     }
 
     static create(ticketId: number): TicketId | InvalidTicketIdError {
-        if (!this.validate(ticketId)) return new InvalidTicketIdError(ticketId);
+        const isValidParam = this.validate(ticketId);
+        if (!isValidParam) return new InvalidTicketIdError(ticketId);
 
         return new TicketId(ticketId);
     }

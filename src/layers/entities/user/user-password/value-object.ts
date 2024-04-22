@@ -14,7 +14,8 @@ export class UserPassword {
     }
 
     static create(userPassword: string) {
-        if (!this.validate(userPassword)) return new InvalidUserPasswordError();
+        const isValidParam = this.validate(userPassword);
+        if (!isValidParam) return new InvalidUserPasswordError();
 
         return new UserPassword(userPassword);
     }
