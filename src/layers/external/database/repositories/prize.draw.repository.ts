@@ -41,5 +41,11 @@ export class PrizeDrawRepositoryAdapter implements PrizeDrawRepositoryProtocol {
         return this.toMapperPrizeDrawModel(prizeDraw as WithId<Document>);
     }
 
+    async updatePrizeDrawCurrent(): Promise<void> {
+
+        await DatabaseNoSQLHelper.getCollection(this.collection)
+            .updateOne({ current: true }, { $set: { current: false } })
+    }
+
 
 }

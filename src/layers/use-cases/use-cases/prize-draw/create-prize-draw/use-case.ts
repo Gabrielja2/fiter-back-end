@@ -103,6 +103,13 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 			}
 		}
 
+		await this.prizeDrawRepository.updatePrizeDrawCurrent();
+		await this.prizeDrawRepository.createPrizeDraw({
+			prizeDrawSequence: currentPrizeDraw.prizeDrawSequence + 1,
+			current: true,
+
+		})
+
 		return "Sorteio realizado com sucesso";
 	}
 }
