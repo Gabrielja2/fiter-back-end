@@ -9,4 +9,4 @@ export * from "./ticket-config/find.ticket.config.controller";
 export * from "./prize-draw-config/create.prize.draw.config.controller";
 export * from "./prize-draw-config/find.prize.draw.config.controller";
 
-export * from "./prize-draw/create.prize.draw.controller";
+export * from "./prize-draw/register.prize.draw.controller";

@@ -6,7 +6,7 @@ import {
     FindTicketConfigUseCase,
     CreatePrizeDrawConfigUseCase,
     FindPrizeDrawConfigUseCase,
-    RegisterPrizeDrawUseCase,
+    CreatePrizeDrawUseCase,
 } from "@/layers/use-cases"
 import {
     userRepositoryAdapter,
@@ -23,7 +23,7 @@ import {
 export const createUserUseCase = new CreateUserUseCase(userRepositoryAdapter, criptographyAdapter, balanceRepositoryAdapter);
 export const loginUserUseCase = new LoginUserUseCase(userRepositoryAdapter, criptographyAdapter, authenticationAdapter);
 
-export const registerTicketUseCase = new RegisterTicketUseCase(ticketRepositoryAdapter, userRepositoryAdapter, balanceRepositoryAdapter);
+export const registerTicketUseCase = new RegisterTicketUseCase(ticketRepositoryAdapter, userRepositoryAdapter, balanceRepositoryAdapter, prizeDrawRepositoryAdapter);
 
 export const createTicketConfigUseCase = new CreateTicketConfigUseCase(ticketConfigRepositoryAdapter);
 export const findTicketConfigUseCase = new FindTicketConfigUseCase(ticketConfigRepositoryAdapter);
@@ -31,6 +31,6 @@ export const findTicketConfigUseCase = new FindTicketConfigUseCase(ticketConfigR
 export const createPrizeDrawConfigUseCase = new CreatePrizeDrawConfigUseCase(prizeDrawConfigRepositoryAdapter);
 export const findPrizeDrawConfigUseCase = new FindPrizeDrawConfigUseCase(prizeDrawConfigRepositoryAdapter);
 
-export const registerPrizeDrawUseCase = new RegisterPrizeDrawUseCase(prizeDrawRepositoryAdapter);
+export const createPrizeDrawUseCase = new CreatePrizeDrawUseCase(prizeDrawRepositoryAdapter);
 
 

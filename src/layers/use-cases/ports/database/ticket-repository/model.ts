@@ -4,6 +4,7 @@ export class TicketModel {
         public ticketId: number,
         public price: number,
         public selectedNumbers: number[],
-        public userId: string
+        public userId: string,
+        public prizeDrawId: string
     ) { }
 }

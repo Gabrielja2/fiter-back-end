@@ -1,7 +1,9 @@
 export class PrizeDrawModel {
     constructor(
         public readonly id: string,
-        public award: number,
-        public quantityNumbers: number,
+        public prizeDrawSequence: number,
+        public current: boolean,
+        public numbers?: number[],
+        public prize?: number,
     ) { }
 }

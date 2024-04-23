@@ -7,7 +7,7 @@ import {
     FindTicketConfigController,
     CreatePrizeDrawConfigController,
     FindPrizeDrawConfigController,
-    RegisterPrizeDrawController,
+    CreatePrizeDrawController,
 } from "@/layers/presentation"
 import {
     createTicketConfigUseCase,
@@ -17,7 +17,7 @@ import {
     findTicketConfigUseCase,
     createPrizeDrawConfigUseCase,
     findPrizeDrawConfigUseCase,
-    registerPrizeDrawUseCase,
+    createPrizeDrawUseCase,
 } from "@/main/factories"
 
 export const createUserController = new TreatmentDecorator(new CreateUserController(createUserUseCase));
@@ -31,6 +31,6 @@ export const findTicketConfigController = new TreatmentDecorator(new FindTicketC
 export const createPrizeDrawConfigController = new TreatmentDecorator(new CreatePrizeDrawConfigController(createPrizeDrawConfigUseCase));
 export const findPrizeDrawConfigController = new TreatmentDecorator(new FindPrizeDrawConfigController(findPrizeDrawConfigUseCase));
 
-export const registerPrizeDrawController = new TreatmentDecorator(new RegisterPrizeDrawController(registerPrizeDrawUseCase));
+export const createPrizeDrawController = new TreatmentDecorator(new CreatePrizeDrawController(createPrizeDrawUseCase));
 
 

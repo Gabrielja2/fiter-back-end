@@ -11,7 +11,8 @@ export class TicketRepositoryAdapter implements TicketRepositoryProtocol {
             ticket?.ticketId,
             ticket?.price,
             ticket?.selectedNumbers,
-            ticket?.userId
+            ticket?.userId,
+            ticket?.prizeDrawId
         );
     }
 
@@ -23,6 +24,7 @@ export class TicketRepositoryAdapter implements TicketRepositoryProtocol {
                 price: data.price,
                 selected_numbers: data.selectedNumbers,
                 user_id: new ObjectId(userId),
+                prize_draw_id: null,
                 created_at: new Date(),
                 updated_at: null,
             })
@@ -33,4 +35,18 @@ export class TicketRepositoryAdapter implements TicketRepositoryProtocol {
         return this.toMapperTicketModel(insertedTicket as WithId<Document>);
     }
 
+    async updateTicketPrizeDrawId(ticketId: string, prizeDrawId: string): Promise<void> {
+
+        const filter = { _id: new ObjectId(ticketId) };
+        const update = {
+            $set: {
+                prize_draw_id: new ObjectId(prizeDrawId),
+                updated_at: new Date()
+            },
+        } as Document;
+
+        await DatabaseNoSQLHelper.getCollection(this.collection)
+            .updateOne(filter, update);
+    }
 }
+

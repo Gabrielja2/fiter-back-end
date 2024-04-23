@@ -20,7 +20,7 @@ content-type: application/json
 ###
 POST http://localhost:3030/api/tickets/register HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY4ZDA5Zjc0NzUxNTA1NDFkOTUzMiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NDM0MDYsImV4cCI6MTcyMjQ4MzUwNX0.UhFEsE2KdPdo2WZi2yGzFj5oKsRceKw5qlHnoRhD1ig
 
     {
         "tickets": [
@@ -43,3 +43,24 @@ GET http://localhost:3030/api/ticket-config HTTP/1.1
 content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
 
+
+###
+POST http://localhost:3030/api/prize-draw-config/register HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+
+    
+    {
+       
+        "prizeDrawConfigAward": 1500000.00,
+        "prizeDrawConfigQuantityNumbers": 15
+    }
+                
+
+
+###
+GET http://localhost:3030/api/prize-draw-config HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+
+    

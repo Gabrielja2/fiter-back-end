@@ -1,6 +1,7 @@
-import { RegisterPrizeDrawDTO } from "@/layers/use-cases/use-cases";
+import { CreatePrizeDrawDTO } from "@/layers/use-cases/use-cases";
 import { PrizeDrawModel } from "./model";
 
 export interface PrizeDrawRepositoryProtocol {
-    registerPrizeDraw(data: RegisterPrizeDrawDTO): Promise<PrizeDrawModel>;
+    createPrizeDraw(data: CreatePrizeDrawDTO): Promise<PrizeDrawModel>;
+    findCurrentPrizeDraw(): Promise<PrizeDrawModel | null>;
 }

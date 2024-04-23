@@ -1,7 +1,7 @@
 import { InvalidParamError, NotFoundError } from "@/layers/use-cases/errors";
 import { RegisterTicketDTO, RegisterTicketResponseDTO } from "./dtos";
 import { Ticket } from "@/layers/entities";
-import { TicketRepositoryProtocol, UserRepositoryProtocol, BalanceRepositoryProtocol } from "@/layers/use-cases/ports";
+import { TicketRepositoryProtocol, UserRepositoryProtocol, BalanceRepositoryProtocol, PrizeDrawRepositoryProtocol } from "@/layers/use-cases/ports";
 import { RegisterTicketUseCaseProtocol } from "./protocol";
 
 export class RegisterTicketUseCase implements RegisterTicketUseCaseProtocol {
@@ -9,7 +9,8 @@ export class RegisterTicketUseCase implements RegisterTicketUseCaseProtocol {
 	constructor(
 		private readonly ticketRepository: TicketRepositoryProtocol,
 		private readonly userRepository: UserRepositoryProtocol,
-		private readonly balanceRepository: BalanceRepositoryProtocol
+		private readonly balanceRepository: BalanceRepositoryProtocol,
+		private readonly prizeDrawRepository: PrizeDrawRepositoryProtocol
 
 	) { }
 
@@ -40,6 +41,20 @@ export class RegisterTicketUseCase implements RegisterTicketUseCaseProtocol {
 			}, userId);
 
 			userBalance.balance -= price;
+
+
+			const currentPrizeDraw = await this.prizeDrawRepository.findCurrentPrizeDraw();
+
+			if (!currentPrizeDraw) {
+				const newPrizeDraw = await this.prizeDrawRepository.createPrizeDraw({
+					prizeDrawSequence: 1,
+					current: true
+				});
+
+				await this.ticketRepository.updateTicketPrizeDrawId(newTicket.id, newPrizeDraw.id);
+			} else {
+				await this.ticketRepository.updateTicketPrizeDrawId(newTicket.id, currentPrizeDraw.id);
+			}
 
 			await this.userRepository.updateUserTickets(user.id, newTicket.id);
 		}
