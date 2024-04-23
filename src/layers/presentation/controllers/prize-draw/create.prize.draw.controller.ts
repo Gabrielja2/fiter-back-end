@@ -7,7 +7,7 @@ export class CreatePrizeDrawController implements HttpProtocol {
     constructor(private readonly useCase: CreatePrizeDrawUseCaseProtocol) { }
 
     async handle(request: HttpRequest): Promise<HttpResponse> {
-        const response = await this.useCase.execute(request.data);
+        const response = await this.useCase.execute(request.userId as string);
 
         if (response instanceof Error) return badRequest(response);
 

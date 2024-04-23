@@ -13,10 +13,13 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 
 	) { }
 
-	async execute(): Promise<CreatePrizeDrawResponseDTO> {
+	async execute(userId: string): Promise<CreatePrizeDrawResponseDTO> {
 
 		const currentPrizeDraw = await this.prizeDrawRepository.findCurrentPrizeDraw();
 		if (!currentPrizeDraw) return new NotFoundError('Sorteio atual não encontrado');
+
+		const ticketsFromPrizeDraw = await this.ticketRepository.findTicketsByPrizeDrawId(currentPrizeDraw.id);
+		if (!ticketsFromPrizeDraw) return new NotFoundError('Bilhetes não encontrados para o sorteio atual');
 
 		let numeros = [];
 		let numerosGerados = new Set();
@@ -31,11 +34,7 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 		numerosGerados.clear();
 		numeros = numeros.sort((a, b) => a - b);
 
-
-		const ticketsFromPrizeDraw = await this.ticketRepository.findTicketsByPrizeDrawId(currentPrizeDraw.id);
-		if (!ticketsFromPrizeDraw) return new NotFoundError('Bilhetes não encontrados para o sorteio atual');
-
-		const winningTickets = [];
+		let winningTickets = [];
 
 		for (const ticket of ticketsFromPrizeDraw) {
 			const selectedNumberPerTicket = ticket.selectedNumbers.sort((a, b) => a - b);
@@ -76,11 +75,27 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 				});
 
 				const winners = await this.prizeDrawResultRepository.findWinnersByWinnerTicketId(winningTicket.id);
+
 				if (!winners) return new NotFoundError('Vencedores não encontrados');
 
 
 				for (const winner of winners) {
+					const award = winner.drawPrize;
+					console.log('award', award);
+
 					const winnerTicket = await this.ticketRepository.findTicketsById(winner.winnerTicketId);
+					console.log('winnerTicket', winnerTicket?.userId);
+					if (!winnerTicket) return new NotFoundError('Bilhetes não encontrados');
+
+					const userWinnerBalance = await this.balanceRepository.findBalanceByUserId(winnerTicket.userId);
+					console.log('userWinnerBalance', userWinnerBalance);
+
+					if (!userWinnerBalance) return new NotFoundError('Saldo do vencedor não encontrado');
+
+
+					const newBalance = userWinnerBalance.balance + award;
+					await this.balanceRepository.updateBalance(userWinnerBalance.id, newBalance);
+
 
 				}
 
