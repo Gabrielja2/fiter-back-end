@@ -4,8 +4,8 @@ import { InvalidParamError, NotFoundError, PrizeDrawResultModel } from "@/layers
 export type CreatePrizeDrawResultDTO = {
     prizeDrawId: string;
     drawNumbers: number[];
-    winnerTicketId: string;
     drawPrize: number;
+    winnerTicketId: string | null;
 }
 
 

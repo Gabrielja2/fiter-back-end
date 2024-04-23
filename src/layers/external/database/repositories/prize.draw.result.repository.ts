@@ -17,12 +17,14 @@ export class PrizeDrawResultRepositoryAdapter implements PrizeDrawResultReposito
 
 
     async createPrizeDrawResult(data: CreatePrizeDrawResultDTO): Promise<PrizeDrawResultModel> {
+        console.log('data', data);
+
         const prizeDrawResultCollection = await DatabaseNoSQLHelper.getCollection(this.collection)
             .insertOne({
                 prize_draw_id: new ObjectId(data.prizeDrawId),
                 draw_numbers: data.drawNumbers,
-                winner_ticket_id: new ObjectId(data.winnerTicketId),
-                draw_prize: data.drawPrize,
+                winner_ticket_id: data.winnerTicketId ? new ObjectId(data.winnerTicketId) : null,
+                draw_prize: data.drawPrize ?? 0,
                 created_at: new Date(),
                 updated_at: null
             })

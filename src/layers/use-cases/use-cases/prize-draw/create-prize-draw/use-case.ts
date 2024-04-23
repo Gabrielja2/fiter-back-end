@@ -67,7 +67,7 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 				const drawPrize = await this.prizeDrawConfigRepository.findPrizeDrawConfigByQuantityNumbers(count);
 				if (!drawPrize) return new NotFoundError('Configuração de sorteio não encontrada');
 
-				const result = await this.prizeDrawResultRepository.createPrizeDrawResult({
+				await this.prizeDrawResultRepository.createPrizeDrawResult({
 					prizeDrawId: currentPrizeDraw.id,
 					drawNumbers: numeros,
 					winnerTicketId: winningTicket.id,
@@ -102,6 +102,19 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 
 			}
 		}
+
+		if (!winningTickets || winningTickets.length === 0) {
+			console.log('caiu aquiiiii __________________ \n\n');
+
+			await this.prizeDrawResultRepository.createPrizeDrawResult({
+				prizeDrawId: currentPrizeDraw.id,
+				drawNumbers: numeros,
+				winnerTicketId: null,
+				drawPrize: 0
+
+			})
+		}
+		console.log('caiu aquiiiii fora __________________ \n\n');
 
 		await this.prizeDrawRepository.updatePrizeDrawCurrent();
 		await this.prizeDrawRepository.createPrizeDraw({
