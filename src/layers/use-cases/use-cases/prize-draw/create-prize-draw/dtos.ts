@@ -1,4 +1,4 @@
-import { InvalidParamError } from "@/layers/use-cases";
+import { InvalidParamError, NotFoundError, PrizeDrawModel } from "@/layers/use-cases";
 
 
 export type CreatePrizeDrawDTO = {
@@ -7,4 +7,4 @@ export type CreatePrizeDrawDTO = {
 }
 
 
-export type CreatePrizeDrawResponseDTO = string | InvalidParamError;
+export type CreatePrizeDrawResponseDTO = string | PrizeDrawModel | InvalidParamError | NotFoundError;

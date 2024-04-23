@@ -20,18 +20,18 @@ content-type: application/json
 ###
 POST http://localhost:3030/api/tickets/register HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY4ZDA5Zjc0NzUxNTA1NDFkOTUzMiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NDM0MDYsImV4cCI6MTcyMjQ4MzUwNX0.UhFEsE2KdPdo2WZi2yGzFj5oKsRceKw5qlHnoRhD1ig
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjc0ZGMzNTkzYmRkODg1MWNhMDA5MiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NTE4NDYsImV4cCI6MTcyMjQ5MTk0NX0.rEX8qur28SDYOrLbXVl8wkSDgXUWVvU3H3vuhi1dK50
 
     {
         "tickets": [
             {
                 "ticketId": 1,
-                "price": 25000.00,
-                "selectedNumbers": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+                "price": 3.00,
+                "selectedNumbers": [ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
             },
             {
                 "ticketId": 2,
-                "price": 15000.00,
+                "price": 25000,
                 "selectedNumbers": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
             }
                      
@@ -41,13 +41,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY4ZDA5Z
 ###
 GET http://localhost:3030/api/ticket-config HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjc0ZGMzNTkzYmRkODg1MWNhMDA5MiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NTE4NDYsImV4cCI6MTcyMjQ5MTk0NX0.rEX8qur28SDYOrLbXVl8wkSDgXUWVvU3H3vuhi1dK50
 
 
 ###
-POST http://localhost:3030/api/prize-draw-config/register HTTP/1.1
+POST http://localhost:3030/api/prize-draw-config/ HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjc0ZGMzNTkzYmRkODg1MWNhMDA5MiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NTE4NDYsImV4cCI6MTcyMjQ5MTk0NX0.rEX8qur28SDYOrLbXVl8wkSDgXUWVvU3H3vuhi1dK50
 
     
     {
@@ -61,6 +61,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwM
 ###
 GET http://localhost:3030/api/prize-draw-config HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MjY3MTAwMDhhZmY4MGQ3NWNiYjU4MyIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM3OTUzNTEsImV4cCI6MTcyMjQzNTQ1MH0.-sbnJh1FbbNfhOFNJ1DjMnktT1aC-yaGTNjke0-NvKw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjc0ZGMzNTkzYmRkODg1MWNhMDA5MiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NTE4NDYsImV4cCI6MTcyMjQ5MTk0NX0.rEX8qur28SDYOrLbXVl8wkSDgXUWVvU3H3vuhi1dK50
 
+
+
+###
+POST http://localhost:3030/api/prize-draw-result HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Mjc0ZGMzNTkzYmRkODg1MWNhMDA5MiIsImVtYWlsIjoiZ2FiYXJpZWxAdGVzdC5jb20iLCJpYXQiOjE3MTM4NTE4NDYsImV4cCI6MTcyMjQ5MTk0NX0.rEX8qur28SDYOrLbXVl8wkSDgXUWVvU3H3vuhi1dK50
+
+    
     

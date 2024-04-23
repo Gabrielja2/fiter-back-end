@@ -1,6 +1,7 @@
-import { CreatePrizeDrawDTO } from "@/layers/use-cases/use-cases";
+import { CreatePrizeDrawResultDTO } from "@/layers/use-cases";
 import { PrizeDrawResultModel } from "./model";
 
-export interface PrizeDrawRepositoryProtocol {
-    createPrizeDrawResult(data: CreatePrizeDrawDTO): Promise<PrizeDrawResultModel>;
+export interface PrizeDrawResultRepositoryProtocol {
+    createPrizeDrawResult(data: CreatePrizeDrawResultDTO): Promise<PrizeDrawResultModel>;
+    findWinnersByWinnerTicketId(winnerTicketId: string): Promise<PrizeDrawResultModel[] | null>;
 }

@@ -8,11 +8,11 @@ export class TicketRepositoryAdapter implements TicketRepositoryProtocol {
     private toMapperTicketModel(ticket: WithId<Document>) {
         return new TicketModel(
             ticket?._id.toString(),
-            ticket?.ticketId,
+            ticket?.ticket_id,
             ticket?.price,
-            ticket?.selectedNumbers,
-            ticket?.userId,
-            ticket?.prizeDrawId
+            ticket?.selected_numbers,
+            ticket?.user_id,
+            ticket?.prize_draw_id
         );
     }
 
@@ -47,6 +47,32 @@ export class TicketRepositoryAdapter implements TicketRepositoryProtocol {
 
         await DatabaseNoSQLHelper.getCollection(this.collection)
             .updateOne(filter, update);
+    }
+
+    async findTicketsByPrizeDrawId(prizeDrawId: string): Promise<TicketModel[] | null> {
+        const ticketList = []
+
+        const tickets = await DatabaseNoSQLHelper.getCollection(this.collection)
+            .find({ prize_draw_id: new ObjectId(prizeDrawId) }).toArray();
+
+        if (!tickets) return null;
+
+        for (const ticket of tickets) {
+            ticketList.push(this.toMapperTicketModel(ticket as WithId<Document>));
+        }
+
+        return ticketList
+    }
+
+    async findTicketsById(id: string): Promise<TicketModel | null> {
+
+        const ticket = await DatabaseNoSQLHelper.getCollection(this.collection)
+            .findOne({ _id: new ObjectId(id) });
+
+        if (!ticket) return null;
+
+
+        return this.toMapperTicketModel(ticket as WithId<Document>);
     }
 }
 

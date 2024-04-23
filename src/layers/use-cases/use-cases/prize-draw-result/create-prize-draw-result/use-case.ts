@@ -1,19 +1,18 @@
-import { BalanceRepositoryProtocol, NotFoundError, PrizeDrawConfigRepositoryProtocol, PrizeDrawRepositoryProtocol, PrizeDrawResultRepositoryProtocol, TicketRepositoryProtocol } from "@/layers/use-cases";
-import { CreatePrizeDrawResponseDTO } from "./dtos";
-import { CreatePrizeDrawUseCaseProtocol } from "./protocol";
+import { NotFoundError, PrizeDrawConfigRepositoryProtocol, PrizeDrawRepositoryProtocol, PrizeDrawResultRepositoryProtocol, TicketRepositoryProtocol } from "@/layers/use-cases";
+import { CreatePrizeDrawResultDTO, CreatePrizeDrawResultResponseDTO } from "./dtos";
+import { CreatePrizeDrawResultUseCaseProtocol } from "./protocol";
 
-export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
+export class CreatePrizeDrawResultUseCase implements CreatePrizeDrawResultUseCaseProtocol {
 
 	constructor(
 		private readonly prizeDrawRepository: PrizeDrawRepositoryProtocol,
 		private readonly ticketRepository: TicketRepositoryProtocol,
 		private readonly prizeDrawResultRepository: PrizeDrawResultRepositoryProtocol,
 		private readonly prizeDrawConfigRepository: PrizeDrawConfigRepositoryProtocol,
-		private readonly balanceRepository: BalanceRepositoryProtocol
 
 	) { }
 
-	async execute(): Promise<CreatePrizeDrawResponseDTO> {
+	async execute(data: CreatePrizeDrawResultDTO): Promise<CreatePrizeDrawResultResponseDTO> {
 
 		const currentPrizeDraw = await this.prizeDrawRepository.findCurrentPrizeDraw();
 		if (!currentPrizeDraw) return new NotFoundError('Sorteio atual não encontrado');
@@ -54,38 +53,14 @@ export class CreatePrizeDrawUseCase implements CreatePrizeDrawUseCaseProtocol {
 		}
 
 		for (const winningTicket of winningTickets) {
-			const selectedNumberPerTicket = winningTicket.selectedNumbers.sort((a, b) => a - b);
-
-			let count = 0;
-
-			for (const number of selectedNumberPerTicket) {
-				if (numeros.includes(number)) {
-					count++;
-				}
-			}
-
-			if (count > 10) {
-				const drawPrize = await this.prizeDrawConfigRepository.findPrizeDrawConfigByQuantityNumbers(count);
-				if (!drawPrize) return new NotFoundError('Configuração de sorteio não encontrada');
-
-				const result = await this.prizeDrawResultRepository.createPrizeDrawResult({
-					prizeDrawId: currentPrizeDraw.id,
-					drawNumbers: numeros,
-					winnerTicketId: winningTicket.id,
-					drawPrize: drawPrize.award,
-				});
-
-				const winners = await this.prizeDrawResultRepository.findWinnersByWinnerTicketId(winningTicket.id);
-				if (!winners) return new NotFoundError('Vencedores não encontrados');
+			const result = await this.prizeDrawResultRepository.createPrizeDrawResult({
+				prizeDrawId: currentPrizeDraw.id,
+				drawNumbers: numeros,
+				winnerTicketId: winningTicket.id,
+				drawPrize: winningTicket.price,
+			});
 
 
-				for (const winner of winners) {
-					const winnerTicket = await this.ticketRepository.findTicketsById(winner.winnerTicketId);
-
-				}
-
-
-			}
 		}
 
 		return "Sorteio realizado com sucesso";

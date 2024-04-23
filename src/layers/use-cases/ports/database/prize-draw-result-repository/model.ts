@@ -3,7 +3,7 @@ export class PrizeDrawResultModel {
         public readonly id: string,
         public readonly prizeDrawId: string,
         public drawNumbers: number[],
-        public winnerTicketsId: string[],
+        public winnerTicketId: string,
         public drawPrize: number
     ) { }
 }

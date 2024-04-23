@@ -15,3 +15,6 @@ export * from "./prize-draw-config-repository/protocol"
 
 export * from "./prize-draw-repository/model";
 export * from "./prize-draw-repository/protocol"
+
+export * from "./prize-draw-result-repository/model";
+export * from "./prize-draw-result-repository/protocol";

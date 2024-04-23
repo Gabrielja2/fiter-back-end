@@ -7,6 +7,7 @@ import {
     TicketConfigRepositoryAdapter,
     PrizeDrawConfigRepositoryAdapter,
     PrizeDrawRepositoryAdapter,
+    PrizeDrawResultRepositoryAdapter,
 } from "@/layers/external";
 
 
@@ -21,6 +22,7 @@ export const ticketConfigRepositoryAdapter = new TicketConfigRepositoryAdapter()
 
 export const prizeDrawConfigRepositoryAdapter = new PrizeDrawConfigRepositoryAdapter();
 export const prizeDrawRepositoryAdapter = new PrizeDrawRepositoryAdapter();
+export const prizeDrawResultRepositoryAdapter = new PrizeDrawResultRepositoryAdapter()
 
 
 
