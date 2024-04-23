@@ -92,3 +92,67 @@ São as rotas para logar ou registrar um novo usuário
   </details><br /><br />
 
 # ⚠️ Rotas Protegidas por Autenticação (`falta implementar`)
+
+<details>
+<summary><strong>Rota de Registro de tickets</strong></summary>
+
+- Método: POST
+- URL: API_BASE_URL/tickets/register
+- Descrição: Registra um novo bilhete.
+- Exemplo dos parâmetros de entrada: { "tickets": [ { "ticketId": 1, "price":
+  3.00, "selectedNumbers": [ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+  20] }, { "ticketId": 2, "price": 25000, "selectedNumbers": [ 1, 2, 3, 4, 5, 6,
+  7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] } ] }
+- Resposta de sucesso:
+  - Código: 201
+  - Corpo: String com a mensagem de criação com sucesso.
+  </details><br />
+
+<details>
+<summary><strong>Rota de Registro de tickets</strong></summary>
+
+- Método: POST
+- URL: API_BASE_URL/tickets/register
+- Descrição: Registra um novo bilhete.
+- Exemplo dos parâmetros de entrada: { "tickets": [ { "ticketId": 1, "price":
+  3.00, "selectedNumbers": [ 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+  20] }, { "ticketId": 2, "price": 25000, "selectedNumbers": [ 1, 2, 3, 4, 5, 6,
+  7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] } ] }
+- Resposta de sucesso:
+  - Código: 201
+  - Corpo: String com a mensagem de criação com sucesso.
+  </details><br />
+
+<details>
+<summary><strong>Rota de busca de configuração dos tickets</strong></summary>
+
+- Método: GET
+- URL: API_BASE_URL/ticket-config
+- Descrição: Lista as configurações do bilhete.
+- Resposta de sucesso:
+  - Código: 200
+  - Corpo: Um array com as configuração de preço e numeros selecionados.
+  </details><br />
+
+<details>
+<summary><strong>Rota de busca de configuração dos sorteios e os premios</strong></summary>
+
+- Método: GET
+- URL: API_BASE_URL/prize-draw-config
+- Descrição: Lista as configurações do sorteio.
+- Resposta de sucesso:
+
+  - Código: 200
+  - Corpo: Um array com as configuração de prêmio e numeros sorteados.
+  </details><br />
+
+<details>
+<summary><strong>Rota de busca de configuração dos sorteios e os premios</strong></summary>
+
+- Método: POST
+- URL: API_BASE_URL/prize-draw-result
+- Descrição: Cria o sorteio faz todas as açoes necessárias nesse fluxo.
+- Resposta de sucesso:
+  - Código: 201
+  - Corpo: String com a mensagem de criação com sucesso do sorteio.
+  </details><br />
