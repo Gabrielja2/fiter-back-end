@@ -147,7 +147,7 @@ São as rotas para logar ou registrar um novo usuário
   </details><br />
 
 <details>
-<summary><strong>Rota de busca de configuração dos sorteios e os premios</strong></summary>
+<summary><strong>Rota de criação dos sorteios e pagamento dos premios</strong></summary>
 
 - Método: POST
 - URL: API_BASE_URL/prize-draw-result
