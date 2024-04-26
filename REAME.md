@@ -42,10 +42,9 @@ importantes para rodar corretamente o projeto.
 - Confira o arquivo .env na raiz do projeto e preencha com as variáveis de
   ambiente caso seja necessário, mas ja vou deixar elas preenchidas nesse
   exemplo, lembre que é obrigatório algumas dessas váriaveis para conseguir
-  rodar o servidor como PORT, eu utilizei a porta`3030` mas pode ser qualquer
-  uma que não esteja sendo usada na sua máquina, e MONGO_URL, eu utilize um
-  banco postgress que criei na vercel:
-  `postgres://default:4Mv6qsblwaJL@ep-twilight-morning-a4zygmwo.us-east-1.postgres.vercel-storage.com:5432/verceldb`
+  rodar o servidor como PORT, eu utilizei a PORT=`3030` mas pode ser qualquer
+  uma que não esteja sendo usada na sua máquina, e
+  MONGO_UR=`mongodb://localhost:27017/fiter-lottery`
 
 6. Dentro do diretório FITER-LOTTERY-BACKEND, abra um terminal, suba o
    docker-compose e depois no mesmo terminal rode o projeto:
